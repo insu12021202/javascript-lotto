@@ -1,8 +1,12 @@
-const Lotto = require("./Lotto");
-const MissionUtils = require("@woowacourse/mission-utils");
+const LottoUI = require("./LottoUI");
+const lotto = new LottoUI();
 
 class App {
-  play() {}
+  play() {
+    lotto.getPurchaseAmount();
+    lotto.getWinningNumber();
+    lotto.getBonusNumber();
+  }
 }
 
 module.exports = App;

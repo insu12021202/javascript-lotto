@@ -1,4 +1,6 @@
+const Lotto = require("./Lotto");
 const LottoStruct = require("./LottoStruct");
+const MissionUtils = require("@woowacourse/mission-utils");
 
 class LottoUI extends LottoStruct {
   getPurchaseAmount() {
@@ -21,7 +23,8 @@ class LottoUI extends LottoStruct {
     MissionUtils.Console.readLine("로또 당첨 번호를 입력하세요.", (input) => {
       this.winningNum = input.split(",");
     });
+    new Lotto(this.winningNum);
   }
 }
 
-module.exports = LottoPlay;
+module.exports = LottoUI;
