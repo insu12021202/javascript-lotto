@@ -30,16 +30,6 @@ describe("로또 클래스 테스트", () => {
     }).toThrow("[ERROR]");
   });
 
-  test("로또 구입 금액(n) 입력 받기", () => {
-    mockQuestions(["8000"]);
-
-    const log = "8개를 구매했습니다.";
-    const logSpy = getLogSpy();
-    const lotto = new Lotto([1, 2, 3, 4, 5, 6]);
-    lotto.getPurchaseAmount();
-    expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log));
-  });
-
   test("로또 구입 금액(n) 입력 받기 예외 상황", () => {
     mockQuestions(["8500"]);
     expect(() => {
@@ -48,8 +38,11 @@ describe("로또 클래스 테스트", () => {
     }).toThrow("[ERROR]");
   });
 
-  test("로또 번호 뽑기", () => {
-    mockQuestions(["8000"]);
-    expect(() => {});
+  test("당첨 번호 입력 받기", () => {
+    mockQuestions(["1,2,3,4,5,6"]);
+    expect(() => {
+      const lotto = new Lotto([1, 2, 3, 4, 5, 6]);
+      lotto.getWinningNumber();
+    }).toEqual([1, 2, 3, 4, 5, 6]);
   });
 });

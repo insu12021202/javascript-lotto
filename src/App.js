@@ -1,9 +1,8 @@
 const Lotto = require("./Lotto");
+const MissionUtils = require("@woowacourse/mission-utils");
 
 class App {
-  play() {
-    let lotto = new Lotto([1, 2, 3, 4, 5, 6, 7]);
-  }
+  play() {}
 }
 
 module.exports = App;
