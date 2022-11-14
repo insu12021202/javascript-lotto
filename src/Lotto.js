@@ -9,8 +9,20 @@ class Lotto {
   }
 
   validate(numbers) {
+    this.checkLength(numbers);
+    this.checkDuplicateNum(numbers);
+  }
+
+  checkLength(numbers) {
     if (numbers.length !== 6) {
       throw new Error("[ERROR] 로또 번호는 6개여야 합니다.");
+    }
+  }
+
+  checkDuplicateNum(numbers) {
+    const setNumbers = new Set(numbers);
+    if (setNumbers.length !== numbers.length) {
+      throw new Error("[ERROR] 로또 번호는 중복될 수 없습니다.");
     }
   }
 
