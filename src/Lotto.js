@@ -22,7 +22,7 @@ class Lotto {
 
   checkDuplicate(numbers) {
     const setNumbers = new Set(numbers);
-    if (setNumbers.length !== numbers.length) {
+    if (setNumbers.size !== numbers.length) {
       throw new Error("[ERROR] 로또 번호는 중복될 수 없습니다.");
     }
   }

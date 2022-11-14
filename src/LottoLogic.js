@@ -1,13 +1,14 @@
 const LottoStruct = require("./LottoStruct");
+const MissionUtils = require("@woowacourse/mission-utils");
 
 class LottoLogic extends LottoStruct {
-  makeUserLotto(num) {
+  makeUserLotto(amount) {
     let lottoArr = [];
-    for (let i = 0; i < num; i++) {
+    for (let i = 0; i < amount; i++) {
       let lotto = MissionUtils.Random.pickUniqueNumbersInRange(1, 45, 6);
       lottoArr.push(this.lottoSort(lotto));
     }
-    return lottoArr;
+    this.printUserLottos(lottoArr);
   }
 
   lottoSort(lotto) {
@@ -15,6 +16,12 @@ class LottoLogic extends LottoStruct {
       return a - b;
     });
     return lotto;
+  }
+
+  printUserLottos(lottoArr) {
+    lottoArr.map((item) => {
+      MissionUtils.Console.print(`[${String(item).split(",").join(", ")}]`);
+    });
   }
 }
 

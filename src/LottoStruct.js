@@ -3,6 +3,7 @@ class LottoStruct {
     this.purchaseAmount;
     this.bonusNum;
     this.winningNum;
+    this.userLottos = [];
   }
 }
 

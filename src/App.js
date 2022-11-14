@@ -1,11 +1,14 @@
+const LottoLogic = require("./LottoLogic");
 const LottoUI = require("./LottoUI");
-const lotto = new LottoUI();
+const lottoUI = new LottoUI();
+const lottoLogic = new LottoLogic();
 
 class App {
   play() {
-    lotto.getPurchaseAmount();
-    lotto.getWinningNumber();
-    lotto.getBonusNumber();
+    lottoUI.getPurchaseAmount();
+    lottoUI.callLogic();
+    lottoUI.getWinningNumber();
+    lottoUI.getBonusNumber();
   }
 }
 

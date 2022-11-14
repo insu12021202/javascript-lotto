@@ -1,15 +1,23 @@
 const Lotto = require("./Lotto");
 const LottoStruct = require("./LottoStruct");
 const MissionUtils = require("@woowacourse/mission-utils");
+const LottoLogic = require("./LottoLogic");
+
+const lottoLogic = new LottoLogic();
 
 class LottoUI extends LottoStruct {
+  callLogic() {
+    lottoLogic.makeUserLotto(this.purchaseAmount);
+  }
+
   getPurchaseAmount() {
     MissionUtils.Console.readLine("로또 구매 가격을 입력하세요. ", (input) => {
       if (input % 1000 === 0) {
         MissionUtils.Console.print(`${input / 1000}개를 구매했습니다.`);
-        this.purcahseAmount = input / 1000;
+        this.purchaseAmount = input / 1000;
+      } else {
+        throw new Error("[ERROR] 구입 금액은 1000 단위여야 합니다.");
       }
-      throw new Error("[ERROR] 구입 금액은 1000 단위여야 합니다.");
     });
   }
 
@@ -24,6 +32,10 @@ class LottoUI extends LottoStruct {
       this.winningNum = input.split(",");
     });
     new Lotto(this.winningNum);
+  }
+
+  printUserLottos() {
+    MissionUtils.Console.print(this.userLottos);
   }
 }
 
