@@ -10,7 +10,8 @@ class Lotto {
 
   validate(numbers) {
     this.checkLength(numbers);
-    this.checkDuplicateNum(numbers);
+    this.checkDuplicate(numbers);
+    this.checkRange(numbers);
   }
 
   checkLength(numbers) {
@@ -19,14 +20,20 @@ class Lotto {
     }
   }
 
-  checkDuplicateNum(numbers) {
+  checkDuplicate(numbers) {
     const setNumbers = new Set(numbers);
     if (setNumbers.length !== numbers.length) {
       throw new Error("[ERROR] 로또 번호는 중복될 수 없습니다.");
     }
   }
 
-  // TODO: 추가 기능 구현
+  checkRange(numbers) {
+    numbers.forEach((element) => {
+      if (element < 1 || element > 45) {
+        throw new Error("[ERROR] 로또 번호는 1~45 범위 내여야 합니다.");
+      }
+    });
+  }
 }
 
 module.exports = Lotto;
