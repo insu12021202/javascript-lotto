@@ -25,9 +25,24 @@ class Lotto {
   }
 
   makeUserLotto(num) {
-    for (let i = 0; i < num; i++) {}
+    let lottoArr = [];
+    for (let i = 0; i < num; i++) {
+      let lotto = MissionUtils.Random.pickUniqueNumbersInRange(1, 45, 6);
+      lottoArr.push(this.lottoSort(lotto));
+    }
+    return lottoArr;
+  }
+
+  lottoSort(lotto) {
+    lotto.sort(function (a, b) {
+      return a - b;
+    });
+    return lotto;
   }
 
   // TODO: 추가 기능 구현
 }
+
+const lotto = new Lotto([1, 2, 3, 4, 5, 6]);
+console.log(lotto.makeUserLotto(8));
 module.exports = Lotto;

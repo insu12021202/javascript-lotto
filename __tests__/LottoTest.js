@@ -47,4 +47,9 @@ describe("로또 클래스 테스트", () => {
       lotto.getPurchaseAmount();
     }).toThrow("[ERROR]");
   });
+
+  test("로또 번호 뽑기", () => {
+    mockQuestions(["8000"]);
+    expect(() => {});
+  });
 });
